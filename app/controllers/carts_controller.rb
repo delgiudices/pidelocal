@@ -1,8 +1,9 @@
 class CartsController < ApplicationController
   layout 'store'
+  before_action :authenticate_user!, only: [:checkout]
 
   def show
-    @store = Store.find_by(identifier: params[:id])
+    @store = store
     @cart = get_cart
   end
 
@@ -19,5 +20,11 @@ class CartsController < ApplicationController
         flash[:notice] = "El articulo fue removido exitosamente"
         redirect_to cart_path
     end
+  end
+
+  def checkout
+    @store = store
+    @shipping_address = ShippingAddress.new
+    @shipping_addresses = ShippingAddress.where(user_id: current_user.id)
   end
 end

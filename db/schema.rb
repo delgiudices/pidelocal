@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228052050) do
+ActiveRecord::Schema.define(version: 20160228201331) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "owner_id"
@@ -55,6 +55,18 @@ ActiveRecord::Schema.define(version: 20160228052050) do
     t.datetime "image_updated_at"
     t.decimal  "price"
   end
+
+  create_table "shipping_addresses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "city"
+    t.string   "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  add_index "shipping_addresses", ["user_id"], name: "index_shipping_addresses_on_user_id"
 
   create_table "stores", force: :cascade do |t|
     t.string   "name"

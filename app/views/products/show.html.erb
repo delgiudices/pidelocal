@@ -1,40 +1,81 @@
-<div class="col-sm-4 col-lg-4 col-md-4">
-    <img class="the-image" src="<%= @product.image.url(:large) %>" alt="">
-</div>
-<div class="col-sm-4 col-lg-4 col-md-4">
-  <div>
-    <h4 class="pull-right">RD$<%= @product.price %></h4>
-    <h4><a href="javascript:;"><%= @product.name %></a>
-    </h4>
-    <p><%= @product.description %></p>
-  </div>
-  <div class="ratings">
-    <p class="pull-right">15 reviews</p>
-    <p>
-    <span class="glyphicon glyphicon-star"></span>
-    <span class="glyphicon glyphicon-star"></span>
-    <span class="glyphicon glyphicon-star"></span>
-    <span class="glyphicon glyphicon-star"></span>
-    <span class="glyphicon glyphicon-star"></span>
-    </p>
-  </div>
-  <div class="buttons row">
-    <form method="post">
-      <%= token_tag nil %>
-      <div class="col-md-3">
-        <select name="quantity" class="form-control">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
+<div class="row">
+  <div id="sns_main" class="col-md-12 col-main">
+    <div id="sns_mainmidle">
+      <div class="product-view sns-product-detail">
+        <div class="product-essential clearfix">
+          <div class="row row-img">
+
+            <div class="product-img-box col-md-4 col-sm-5">
+              <div class="detail-img">
+                <img src="/images/medium/missing.png" alt="">
+              </div>
+              <div class="small-img">
+                <div id="sns_thumbail" class="owl-carousel owl-theme">
+                  <div class="item">
+                    <img src="/images/thumb/missing.png" alt="">
+                  </div>
+                  <div class="item">
+                    <img src="/images/thumb/missing.png" alt="">
+                  </div>
+                  <div class="item">
+                    <img src="/images/thumb/missing.png" alt="">
+                  </div>
+                  <div class="item">
+                    <img src="/images/thumb/missing.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="product_shop" class="product-shop col-md-8 col-sm-7">
+              <div class="item-inner product_list_style">
+                <div class="item-info">
+                  <div class="item-title">
+                    <a title="Modular Modern" href="javascript:;"><%= @product.name %></a>
+                  </div>
+                  <div class="item-price">
+                    <div class="price-box">
+                      <span class="regular-price">
+                        <span class="price">$ <%= @product.price %></span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="availability">
+                    <p class="style1">
+                    <% if @product.quantity > 0 %>
+                      Hay disponible
+                    <% else %>
+                      Out of stock
+                    <% end %>
+                    </p>
+                  </div>
+                 <div class="desc std">
+                    <h5>Descripción</h5>
+                    <p><%= @product.description %></p>
+                  </div>
+
+                 <div class="actions">
+                   <form method="post">
+                     <%= token_tag nil %>
+                     <label class="gfont" for="qty">Qty : </label>
+                     <div class="qty-container">
+                       <button class="qty-decrease" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty ) && qty > 1 ) qty_el.value--;return false;" type="button"></button>
+                       <input id="qty" class="input-text qty" type="text" title="Qty" value="1" name="quantity">
+                       <button class="qty-increase" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value++;return false;" type="button"></button>
+                     </div>
+
+                     <button class="btn-cart" title="Add to Cart" data-id="qv_item_8" type="submit">
+                       Agregar al carrito
+                     </button>
+                   </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <button type="submit" class="btn btn-success pull-right">
-        <i class="glyphicon glyphicon-shopping-cart"> Agregar al carrito</i>
-      </button>
-    </form>
+    </div>
   </div>
 </div>
 

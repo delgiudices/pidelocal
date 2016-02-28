@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "users/registrations", sessions: "users/sessions" }
-  resources :stores
-  get '/stores/:id/cart', to: 'carts#show', as: 'cart'
-  post '/stores/:id/cart', to: 'carts#update', as: 'update_cart'
-  get '/stores/:id/:category_id', to: 'categories#show', as: 'category'
-  get '/stores/:id/product/:product_id', to: 'products#show', as: 'product'
-  post '/stores/:id/product/:product_id', to: 'products#add_to_cart', as: 'add_product_to_cart'
+  get '/:id', to: 'stores#show', as: 'store'
+  get '/:id/cart', to: 'carts#show', as: 'cart'
+  post '/:id/cart', to: 'carts#update', as: 'update_cart'
+  get '/:id/checkout/', to: 'carts#checkout', as: 'checkout'
+  get '/:id/:category_id', to: 'categories#show', as: 'category'
+  get '/:id/product/:product_id', to: 'products#show', as: 'product'
+  post '/:id/product/:product_id', to: 'products#add_to_cart', as: 'add_product_to_cart'
+  post '/shipping_addresses/', to: 'shipping_addresses#create', as: 'shipping_addresses'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

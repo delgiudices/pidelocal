@@ -1,0 +1,96 @@
+<div class="row shoppingcart">
+  <div class="col-md-8">
+    <form id="payment-form">
+      <h3>Seleccione una Direccion de Envio</h3>
+      <% @shipping_addresses.each do |sa| %>
+        <li class="shipping-address">
+          <input type="radio" name="order[shipping_address]">
+          <span class="name"><%= sa.name %></span>
+          <span class="phone"><%= sa.phone %></span>
+          <span class="address"><%= sa.address %></span>
+          <span class="city"><%= sa.city %></span>
+        </li>
+      <% end %>
+      <div class="form-bd">
+        <h3>Metodo de Pago</h3>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group">
+              <label>Numero de La Tarjeta</label>
+              <div class="input-group">
+                <input id="cardNumber" type="text" class="form-control" name="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number" />
+                <span class="input-group-addon"><i class="fa fa-credit-card" style="top: 0px;"></i></span>
+              </div>
+            </div>                            
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Tipo de tarjeta</label>
+              <select name="card[type]">
+                <option value="visa">Visa</option>
+                <option value="mastercard">Master Card</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-7 col-md-7">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-xs-6 col-lg-6">
+                  <input type="text" class="form-control" name="expMonth" placeholder="MM" required data-stripe="exp_month" />
+                </div>
+                <div class="col-xs-6 col-lg-6 pl-ziro">
+                  <input type="text" class="form-control" name="expYear" placeholder="YY" required data-stripe="exp_year" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-5 col-md-5 pull-right">
+            <div class="form-group">
+              <input type="password" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" />
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </form>
+    
+  </div>
+  <div class="col-md-4">
+    <%= bootstrap_form_for @shipping_address, url: shipping_addresses_path(id: params[:id]) do |f| %>
+      <div class="form-bd">
+        <h3>Agregar Dirección de Envio</h3>
+
+        <%= f.text_field :name, label: 'Nombre' %>
+
+        <%= f.phone_field :phone, label: 'Telefono' %>
+
+        <%= f.select :city, ShippingAddress::CITIES, label: 'Ciudad'  %>
+
+        <%= f.text_field :address, label: 'Dirección' %>
+
+        
+        <div class="row">
+          <button class="btn btn-link"><span class="style-bd">Agregar Dirección</span></button>
+        </div>
+      </div>
+    <% end %>
+    <form class="form-right col-md-12">
+      <div class="form-bd">
+        <p class="subtotal">
+        <span class="text1">SUBTOTAL:</span>
+        <span class="text2">$1,794.00</span>
+        </p>
+        <h3>
+          <span class="text3">GRAND TOTAL:</span>
+          <span class="text4">$1,794.00</span>
+        </h3>
+        <span class="style-bd">Proceed to checkout</span>
+        <p class="checkout">Checkout with Multiple Addresses</p>
+      </div>
+    </form>
+  </div>
+</div>
