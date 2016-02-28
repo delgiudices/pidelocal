@@ -1,0 +1,40 @@
+<div class="col-sm-4 col-lg-4 col-md-4">
+    <img class="the-image" src="<%= @product.image.url(:large) %>" alt="">
+</div>
+<div class="col-sm-4 col-lg-4 col-md-4">
+  <div>
+    <h4 class="pull-right">RD$<%= @product.price %></h4>
+    <h4><a href="javascript:;"><%= @product.name %></a>
+    </h4>
+    <p><%= @product.description %></p>
+  </div>
+  <div class="ratings">
+    <p class="pull-right">15 reviews</p>
+    <p>
+    <span class="glyphicon glyphicon-star"></span>
+    <span class="glyphicon glyphicon-star"></span>
+    <span class="glyphicon glyphicon-star"></span>
+    <span class="glyphicon glyphicon-star"></span>
+    <span class="glyphicon glyphicon-star"></span>
+    </p>
+  </div>
+  <div class="buttons row">
+    <form method="post">
+      <%= token_tag nil %>
+      <div class="col-md-3">
+        <select name="quantity" class="form-control">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success pull-right">
+        <i class="glyphicon glyphicon-shopping-cart"> Agregar al carrito</i>
+      </button>
+    </form>
+  </div>
+</div>
+

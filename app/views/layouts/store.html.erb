@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dominicazon</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="<%= store_path(id:@store.identifier) %>"><%= @store.name %></a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <% @store.categories.each do |category| %>
+          <li>
+            <%= link_to category.name, category_path(id: category.store.identifier, category_id: category.identifier) %>
+            <!--            <a href="{% url 'category' category.identifier %}"><%= category.name %></a>-->
+          </li>
+        <% end %>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a class="cart-button" href="<%= cart_path(id: @store.identifier) %>"><i class="glyphicon glyphicon-shopping-cart"></i></a>
+          </li>
+          <li class="dropdown">
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ user.get_full_name }} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'logout' %}">Cerrar Sesion</a></li>
+              </ul>
+            </li>
+            -->
+            <% if user_signed_in? %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Cerrar Sesión", destroy_user_session_path(:id => @store.identifier), :method => :delete %></li>
+                </ul>
+              </li>
+            <% else %>
+
+              <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">Acceder <span class="caret"></span></a>
+              <ul class="dropdown-menu dropdown-lr animated slideInRight" role="menu">
+                <div class="col-lg-12">
+                  <div class="text-center"><h3><b>Acceder</b></h3></div>
+                  <form id="ajax-login-form" action="<%= user_session_path(:id => @store.identifier) %>" method="post" role="form" autocomplete="off">
+                    <%= token_tag nil %>
+                    <div class="form-group">
+                      <label for="username">Correo</label>
+                      <input type="text" name="user[email]" id="username" tabindex="1" class="form-control" placeholder="Username" value="" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="password">Contraseña</label>
+                      <input type="password" name="user[password]" id="password" tabindex="2" class="form-control" placeholder="Password" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-xs-7">
+                          <a href="<%= new_user_registration_path(:id => @store.identifier) %>"><button type="button" class="btn btn-success">Registarse</button></a>
+                        </div>
+                        <div class="col-xs-5 pull-right">
+                          <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-success" value="Ingresar">
+                        </div>
+                      </div>
+                    </div>
+
+                    <input type="hidden" class="hide" name="token" id="token" value="a465a2791ae0bae853cf4bf485dbe1b6">
+                  </form>
+                </div>
+              </ul>
+            <% end %>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+    <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-md-12">
+
+        <% flash.each do |name, msg| %>
+          <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <%= msg %>
+          </div>
+        <% end %>
+
+        <div class="row">
+          <%= yield %>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <!-- /.container -->
+
+  <div class="container">
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright &copy; </p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <!-- /.container -->
+</body>
+</html>

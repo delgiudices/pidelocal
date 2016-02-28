@@ -1,0 +1,63 @@
+<div class="col-md-12">
+  <h3>Carrito </h3>
+</div>
+<div class="col-md-12">
+  <% if @cart.shopping_cart_items.count > 0 %>
+    <table id="cart" class="table table-hover table-condensed">
+      <thead>
+        <tr>
+          <th style="width:50%">Producto</th>
+          <th style="width:10%">Precio</th>
+          <th style="width:8%">Cantidad</th>
+          <th style="width:22%" class="text-center">Subtotal</th>
+          <th style="width:10%"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart.shopping_cart_items.each do |item| %>
+          <form method="post">
+            <tr>
+              <td data-th="Product">
+                <div class="row">
+                  <div class="col-sm-2 hidden-xs"><img src="<%= item.item.image.url(:thumb) %>" alt="..." class="img-responsive"/></div>
+                  <div class="col-sm-10">
+                    <h4 class="nomargin"><a href="{% url 'product' product.product.identifier %}"><%= item.item.name %></a></h4>
+                    <p><%= item.item.description %></p>
+                  </div>
+                </div>
+              </td>
+              <td data-th="Price"><%= item.price %></td>
+              <td data-th="Quantity">
+                <input type="number" name="quantity" class="form-control text-center" value="<%= item.quantity %>">
+              </td>
+              <td data-th="Subtotal" class="text-center"><%= item.price * item.quantity %></td>
+              <td class="actions" data-th="">
+                <%= token_tag nil %>
+                <input type="hidden" name="product" value="<%= item.id %>" />
+
+                <button class="btn btn-info btn-sm" name="cart_action" value="refresh"><i class="fa fa-refresh"></i></button>
+                <button class="btn btn-danger btn-sm" name="cart_action" value="delete"><i class="fa fa-trash-o"></i></button>                                
+              </td>
+            </tr>
+          </form>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr class="visible-xs">
+          <td class="text-center"><strong>Total RD$<%= @cart.total %></strong></td>
+        </tr>
+        <tr>
+          <td><a href="{% url 'home' %}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continuar Comprando</a></td>
+          <td colspan="2" class="hidden-xs"></td>
+          <td class="hidden-xs text-center"><strong>Total RD$<%= @cart.total %></strong></td>
+          <td><a href="{% url 'order_info' %}" class="btn btn-success btn-block">Pagar <i class="fa fa-angle-right"></i></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  <% else %>
+    <div class="col-md-12">
+      <p>El carrito está vacío.</p>
+    </div>
+  <% end %>
+</div>
+
