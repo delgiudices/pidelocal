@@ -11,14 +11,14 @@ class CartsController < ApplicationController
     cart_action = params[:cart_action]
     product = CartItem.find(params[:product])
     if cart_action == 'refresh'
-     product.quantity = params[:quantity]
+      product.quantity = params[:quantity]
       product.save
       flash[:notice] = "El carrito fue actualizado exitosamente"
       redirect_to cart_path
     elsif
-        product.destroy
-        flash[:notice] = "El articulo fue removido exitosamente"
-        redirect_to cart_path
+      product.destroy
+      flash[:notice] = "El articulo fue removido exitosamente"
+      redirect_to cart_path
     end
   end
 
@@ -26,5 +26,8 @@ class CartsController < ApplicationController
     @store = store
     @shipping_address = ShippingAddress.new
     @shipping_addresses = ShippingAddress.where(user_id: current_user.id)
+  end
+
+  def review_order
   end
 end

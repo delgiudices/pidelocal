@@ -1,7 +1,12 @@
 require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  should belong_to :store
+
+  should validate_presence_of :name
+  should validate_presence_of :quantity
+  should validate_presence_of :price
+  should validate_presence_of :category
+  should validate_presence_of :store
 end
