@@ -45,3 +45,11 @@ ul.dropdown-lr {
   margin: 2px;
   list-style: none;
 }
+
+#logo a h1 {
+    font-family: sans-serif;
+}
+
+.product-image {
+    border: none !important;
+}
