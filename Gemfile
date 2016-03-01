@@ -35,6 +35,8 @@ gem 'acts_as_shopping_cart', '~> 0.2.1'
 
 gem "font-awesome-rails"
 
+gem 'activeadmin', github: 'activeadmin'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
