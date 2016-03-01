@@ -5,10 +5,7 @@
       <% @shipping_addresses.each do |sa| %>
         <li class="shipping-address">
           <input type="radio" name="order[shipping_address]">
-          <span class="name"><%= sa.name %></span>
-          <span class="phone"><%= sa.phone %></span>
-          <span class="address"><%= sa.address %></span>
-          <span class="city"><%= sa.city %></span>
+          <span class="address"><%= sa.name %>, <%= sa.phone %>, <%= sa.address %>, <%= sa.city %></span>
         </li>
       <% end %>
       <div class="form-bd">

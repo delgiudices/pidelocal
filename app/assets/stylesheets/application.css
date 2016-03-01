@@ -39,17 +39,14 @@ ul.dropdown-lr {
   color: #FFF;
 }
 
-.shipping-address {
-  border: solid 1px #ccc;
-  padding: 10px;
-  margin: 2px;
-  list-style: none;
-}
-
 #logo a h1 {
     font-family: sans-serif;
 }
 
 .product-image {
     border: none !important;
+}
+
+.fa-ul li p { 
+    line-height: 34px !important;
 }
