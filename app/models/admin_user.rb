@@ -3,4 +3,14 @@ class AdminUser < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable
+
+  belongs_to :store
+
+  def products
+    store.products
+  end
+
+  def categories
+    store.categories
+  end
 end
