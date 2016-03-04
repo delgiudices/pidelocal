@@ -31,9 +31,13 @@ $(document).ready ->
       shipping_fee = data.fee
       $('#shipping_fee').html('$' + shipping_fee.toFixed(2))
       tax_fee = (subtotal_fee + shipping_fee) * 0.18
-      $('#tax_fee').html('$' + tax_fee)
+      $('#tax_fee').html('$' + tax_fee.toFixed(2))
       total_fee = subtotal_fee + shipping_fee + tax_fee
       $('#total_fee').html('$' + total_fee)
+
+  $('#review_order_button').click ->
+    debugger;
+    $('#payment-form').submit
 
     
 

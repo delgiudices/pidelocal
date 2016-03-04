@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require bootstrap.min
 //= require jquery.maskedinput.min
+//= require validator.min
 //= require_tree .

@@ -1,23 +1,25 @@
 <div class="row shoppingcart">
   <div class="col-md-8">
-    <form id="payment-form">
+    <form id="payment-form" method="post" action="<%= review_order_path %>" data-toggle="validator">
       <h3>Seleccione una Direccion de Envio</h3>
-      <% @shipping_addresses.each do |sa| %>
-        <li class="shipping-address">
-        <input type="radio" name="order[shipping_address]" value="<%= sa.city %>">
-          <span class="address"><%= sa.name %>, <%= sa.phone %>, <%= sa.address %>, <%= sa.city %></span>
-        </li>
-      <% end %>
+      <div class="form-group">
+        <% @shipping_addresses.each do |sa| %>
+          <div class="radio shipping-address">
+            <label>
+              <input type="radio" name="order[shipping_address]" value="<%= sa.city %>" required>
+              <span class="address"><%= sa.name %>, <%= sa.phone %>, <%= sa.address %>, <%= sa.city %></span>
+            </label>
+            </li>
+          </div>
+        <% end %>
+      </div>
       <div class="form-bd">
         <h3 class="informacion-pago">Información de Pago</h3>
         <div class="row">
           <div class="col-md-8">
             <div class="form-group">
-              <label>Numero de La Tarjeta</label>
-              <div class="input-group">
-                <input id="cardNumber" type="text" class="form-control" name="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number" />
-                <span class="input-group-addon"><i class="fa fa-credit-card" style="top: 0px;"></i></span>
-              </div>
+              <label class="control-label">Numero de La Tarjeta</label>
+              <input id="cardNumber" type="text" class="form-control" name="cardNumber" placeholder="Valid Card Number" required data-stripe="number" />
             </div>                            
           </div>
           <div class="col-md-4">
@@ -36,9 +38,11 @@
             <div class="form-group">
               <div class="row">
                 <div class="col-xs-6 col-lg-6">
+                  <label for="expMonth" class="control-label">Mes</label>
                   <input type="text" class="form-control" name="expMonth" placeholder="MM" required data-stripe="exp_month" />
                 </div>
                 <div class="col-xs-6 col-lg-6 pl-ziro">
+                  <label for="expMonth" class="control-label">Año</label>
                   <input type="text" class="form-control" name="expYear" placeholder="YY" required data-stripe="exp_year" />
                 </div>
               </div>
@@ -46,6 +50,7 @@
           </div>
           <div class="col-xs-5 col-md-5 pull-right">
             <div class="form-group">
+              <label for="expMonth" class="control-label">CVV</label>
               <input type="password" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" />
             </div>
           </div>
@@ -95,7 +100,7 @@
           <span class="text3">TOTAL:</span>
           <span id="total_fee" class="text4">$<%= @cart.total %></span>
         </h3>
-        <span class="style-bd">Revisar la Orden</span>
+        <button id="review_order_button" type="button" class="btn btn-default style-bd">Revisar la Orden</button>
       </div>
     </form>
   </div>
