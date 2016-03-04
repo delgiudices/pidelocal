@@ -14,6 +14,8 @@
  *= require bootstrap.min
  *= require font-awesome
  *= require simen
+ *= require products
+ *= require carts
  */
 
 ul.dropdown-lr {

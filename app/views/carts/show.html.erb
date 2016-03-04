@@ -20,7 +20,7 @@
               <input type="hidden" name="product" value="<%= item.id %>" />
 
               <ul class="nav-mid clearfix">
-                <li class="image"><a href="#"><img src="/images/thumb/missing.png" alt=""></a></li>
+                <li class="image"><a href="#"><img src="<%= item.item.image.url :thumb %>" alt=""></a></li>
                 <li class="item-title"><a href="<% product_path(id: @store.identifier, product_id: item.item.id) %>"><%= item.item.name %></a></li>
                 <li class="icon1"><a href="javascript:refresh_item();"><i class="btn-edit"></i></a></li>
                 <li class="price1">$<%= item.price %></li>

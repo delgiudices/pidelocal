@@ -24,6 +24,7 @@ class CartsController < ApplicationController
 
   def checkout
     @store = store
+    @cart = get_cart
     @shipping_address = ShippingAddress.new
     @shipping_addresses = ShippingAddress.where(user_id: current_user.id)
   end

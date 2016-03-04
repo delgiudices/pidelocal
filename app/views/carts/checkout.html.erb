@@ -71,7 +71,9 @@
 
         
         <div class="row">
-          <button class="btn btn-link"><span class="style-bd">Agregar Dirección</span></button>
+          <div class="col-md-12">
+            <button class="btn btn-default style-bd">Agregar Dirección</button>
+          </div>
         </div>
       </div>
     <% end %>
@@ -79,14 +81,21 @@
       <div class="form-bd">
         <p class="subtotal">
         <span class="text1">SUBTOTAL:</span>
-        <span class="text2">$1,794.00</span>
+        <span class="text2">$<%= @cart.subtotal %></span>
+        </p>
+        <p class="subtotal">
+        <span class="text1">ENVIO:</span>
+        <span class="text2">$<%= @cart.shipping %></span>
+        </p>
+        <p class="subtotal">
+        <span class="text1">ITBIS:</span>
+        <span class="text2">$<%= @cart.tax %></span>
         </p>
         <h3>
-          <span class="text3">GRAND TOTAL:</span>
-          <span class="text4">$1,794.00</span>
+          <span class="text3">TOTAL:</span>
+          <span class="text4">$<%= @cart.total %></span>
         </h3>
-        <span class="style-bd">Proceed to checkout</span>
-        <p class="checkout">Checkout with Multiple Addresses</p>
+        <span class="style-bd">Revisar la Orden</span>
       </div>
     </form>
   </div>
