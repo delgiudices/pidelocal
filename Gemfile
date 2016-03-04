@@ -37,6 +37,8 @@ gem "font-awesome-rails"
 
 gem 'activeadmin', github: 'activeadmin'
 
+gem 'jquery-turbolinks'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

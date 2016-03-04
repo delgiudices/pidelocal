@@ -4,12 +4,12 @@
       <h3>Seleccione una Direccion de Envio</h3>
       <% @shipping_addresses.each do |sa| %>
         <li class="shipping-address">
-          <input type="radio" name="order[shipping_address]">
+        <input type="radio" name="order[shipping_address]" value="<%= sa.city %>">
           <span class="address"><%= sa.name %>, <%= sa.phone %>, <%= sa.address %>, <%= sa.city %></span>
         </li>
       <% end %>
       <div class="form-bd">
-        <h3>Metodo de Pago</h3>
+        <h3 class="informacion-pago">Información de Pago</h3>
         <div class="row">
           <div class="col-md-8">
             <div class="form-group">
@@ -81,19 +81,19 @@
       <div class="form-bd">
         <p class="subtotal">
         <span class="text1">SUBTOTAL:</span>
-        <span class="text2">$<%= @cart.subtotal %></span>
+        <span id="subtotal_fee" class="text2">$<%= @cart.subtotal %></span>
         </p>
         <p class="subtotal">
         <span class="text1">ENVIO:</span>
-        <span class="text2">$<%= @cart.shipping %></span>
+        <span id="shipping_fee" class="text2">$0.00</span>
         </p>
         <p class="subtotal">
         <span class="text1">ITBIS:</span>
-        <span class="text2">$<%= @cart.tax %></span>
+        <span id="tax_fee" class="text2">$<%= @cart.tax %></span>
         </p>
         <h3>
           <span class="text3">TOTAL:</span>
-          <span class="text4">$<%= @cart.total %></span>
+          <span id="total_fee" class="text4">$<%= @cart.total %></span>
         </h3>
         <span class="style-bd">Revisar la Orden</span>
       </div>

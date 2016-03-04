@@ -7,7 +7,7 @@ class Cart < ActiveRecord::Base
   end
 
   def shipping
-    75.00
+    0
   end
 
   def tax

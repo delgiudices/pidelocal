@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { registrations: "users/registrations", sessions: "users/sessions" }
+
+
+  get '/api/shipping_addresses/fee', to: 'shipping_address#fee', as: 'shipping_addresses_fee'
+
   get '/:id', to: 'stores#show', as: 'store'
   get '/:id/cart', to: 'carts#show', as: 'cart'
   post '/:id/cart', to: 'carts#update', as: 'update_cart'
@@ -12,6 +16,8 @@ Rails.application.routes.draw do
   get '/:id/product/:product_id', to: 'products#show', as: 'product'
   post '/:id/product/:product_id', to: 'products#add_to_cart', as: 'add_product_to_cart'
   post '/shipping_addresses/', to: 'shipping_addresses#create', as: 'shipping_addresses'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

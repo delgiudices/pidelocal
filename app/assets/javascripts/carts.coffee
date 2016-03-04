@@ -19,8 +19,23 @@ delete_item = () ->
   $("#cart_form").submit()
 
 $(document).ready ->
+
   $('#shipping_address_phone').mask('(999) 999-9999')
   $('#cardNumber').mask('9999-9999-9999-9999')
+
+  $('input[name=order\\[shipping_address\\]]').change ->
+    selected_val = $('input[name=order\\[shipping_address\\]]:checked').val()
+    query_address = '/api/shipping_addresses/fee?location=' +  selected_val
+    $.get query_address, (data) ->
+      subtotal_fee = parseFloat($("#subtotal_fee").html().substring(1))
+      shipping_fee = data.fee
+      $('#shipping_fee').html('$' + shipping_fee.toFixed(2))
+      tax_fee = (subtotal_fee + shipping_fee) * 0.18
+      $('#tax_fee').html('$' + tax_fee)
+      total_fee = subtotal_fee + shipping_fee + tax_fee
+      $('#total_fee').html('$' + total_fee)
+
+    
 
 
 root = exports ? this

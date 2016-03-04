@@ -110,7 +110,7 @@
                   <ul class="mainnav">
                     <% @store.categories.each do |category| %>
                       <li class="level0 custom-item">
-                        <a class="menu-title-lv0 pd-menu116" href="<%= category_path(id: @store.identifier, category_id: category.identifier) %>" target="_self">
+                        <a class="menu-title-lv0 pd-menu116" href="<%= category_path(id: @store.identifier, category_id: category.identifier) %>" >
                           <span class="title"><%= category.name %></span>
                         </a>
                       </li>
