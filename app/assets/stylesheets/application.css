@@ -51,3 +51,7 @@ ul.dropdown-lr {
 .fa-ul li p { 
     line-height: 34px !important;
 }
+
+.clear {
+  clear: both;
+}

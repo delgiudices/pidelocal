@@ -29,7 +29,7 @@
                   <div class="customer-ct content">
                     <ul class="links">
                       <li>
-                        <a class="" title="Cart" href="<%= cart_path(id: @store.identifier) %>"><i class="fa fa-shopping-cart cart-top-icon"></i> RD$<%= get_cart.total %></a>
+                        <a class="" title="Cart" href="<%= cart_path(id: @store.identifier) %>"><i class="fa fa-shopping-cart cart-top-icon"></i> RD$<%= get_cart.subtotal %></a>
                       </li>
                       <li>
                       <% if user_signed_in? %>

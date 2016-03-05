@@ -30,5 +30,10 @@ class CartsController < ApplicationController
   end
 
   def review_order
+    @store = store
+    @cart = get_cart
+    @shipping_address = ShippingAddress.find(params[:order][:shipping_address])
+    @order = Order.from(cart: @cart, shipping_address: @shipping_address)
   end
+
 end

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   post '/:id/cart', to: 'carts#update', as: 'update_cart'
   get '/:id/checkout', to: 'carts#checkout', as: 'checkout'
   post '/:id/review_order', to: 'carts#review_order', as: 'review_order'
+  post '/:id/place_order', to: 'orders#place_order', as: 'place_order'
+  get '/:id/orders/:order_id', to: 'orders#show', as: 'order'
   get '/:id/:category_id', to: 'categories#show', as: 'category'
   get '/:id/product/:product_id', to: 'products#show', as: 'product'
   post '/:id/product/:product_id', to: 'products#add_to_cart', as: 'add_product_to_cart'

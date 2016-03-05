@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-12">
+    <h4>Resumen de la Orden</h4>
+  </div>
+</div>
+<div class="row">
+
+  <div class="col-md-4">
+    <div class="shipping-address-review-order">
+      <h5>Dirección de Envio</h5>
+      <span class="address-name"><strong>Nombre:</strong> <%= @order.name %></span>
+      <span class="address-phone"><strong>Telefono:</strong> <%= @order.phone %></span>
+      <span class="address-address"><%= @order.address %></span>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="billing-information">
+      <h5>Información de Pago</h5>
+      <span class="card-number">Visa terminada en 5461</span>
+    </div>
+  </div>
+
+</div>
+<hr />
+<% @order.order_items.each do |item| %>
+  <%= render item %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-12 order-totals">
+      <h5>SUBTOTAL: RD<%= number_to_currency(@order.subtotal) %></h5>
+      <h5>ENVIO: RD<%= number_to_currency(@order.shipping) %></h5>
+      <h5>ITBIS: RD<%= number_to_currency(@order.tax) %></h5>
+      <h5>TOTAl:  RD<%= number_to_currency(@order.total) %></h5>
+  </div>
+</div>

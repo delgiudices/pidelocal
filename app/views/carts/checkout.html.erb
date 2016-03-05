@@ -1,12 +1,13 @@
 <div class="row shoppingcart">
   <div class="col-md-8">
     <form id="payment-form" method="post" action="<%= review_order_path %>" data-toggle="validator">
+      <%= token_tag nil %>
       <h3>Seleccione una Direccion de Envio</h3>
       <div class="form-group">
         <% @shipping_addresses.each do |sa| %>
           <div class="radio shipping-address">
             <label>
-              <input type="radio" name="order[shipping_address]" value="<%= sa.city %>" required>
+              <input type="radio" name="order[shipping_address]" value="<%= sa.id %>" required>
               <span class="address"><%= sa.name %>, <%= sa.phone %>, <%= sa.address %>, <%= sa.city %></span>
             </label>
             </li>
@@ -19,7 +20,7 @@
           <div class="col-md-8">
             <div class="form-group">
               <label class="control-label">Numero de La Tarjeta</label>
-              <input id="cardNumber" type="text" class="form-control" name="cardNumber" placeholder="Valid Card Number" required data-stripe="number" />
+              <input id="cardNumber" type="text" class="form-control" name="card[number]" placeholder="Valid Card Number" required data-stripe="number" />
             </div>                            
           </div>
           <div class="col-md-4">
@@ -39,11 +40,11 @@
               <div class="row">
                 <div class="col-xs-6 col-lg-6">
                   <label for="expMonth" class="control-label">Mes</label>
-                  <input type="text" class="form-control" name="expMonth" placeholder="MM" required data-stripe="exp_month" />
+                  <input type="text" class="form-control" name="card[month]" placeholder="MM" required data-stripe="exp_month" />
                 </div>
                 <div class="col-xs-6 col-lg-6 pl-ziro">
                   <label for="expMonth" class="control-label">Año</label>
-                  <input type="text" class="form-control" name="expYear" placeholder="YY" required data-stripe="exp_year" />
+                  <input type="text" class="form-control" name="card[year]" placeholder="YY" required data-stripe="exp_year" />
                 </div>
               </div>
             </div>
@@ -55,7 +56,7 @@
             </div>
           </div>
         </div>
-
+        <button type="submit" style="display: none;"></button>
 
       </div>
     </form>

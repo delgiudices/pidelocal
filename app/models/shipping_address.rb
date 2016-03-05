@@ -8,4 +8,8 @@ class ShippingAddress < ActiveRecord::Base
   validates :address, presence: true
 
   belongs_to :user
+
+  def fee
+    75.00
+  end
 end

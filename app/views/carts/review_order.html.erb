@@ -1,1 +1,53 @@
-Hi
+<div class="row">
+  <div class="col-md-12">
+    <h4>Resumen de la Orden</h4>
+  </div>
+</div>
+<div class="row">
+
+  <div class="col-md-4">
+    <div class="shipping-address-review-order">
+      <h5>Dirección de Envio</h5>
+      <span class="address-name"><strong>Nombre:</strong> <%= @shipping_address.name %></span>
+      <span class="address-phone"><strong>Telefono:</strong> <%= @shipping_address.phone %></span>
+      <span class="address-address"><%= @shipping_address.address %></span>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="billing-information">
+      <h5>Información de Pago</h5>
+      <span class="card-number">Visa terminada en 5461</span>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="shoppingcart">
+      <form method="post" action="<%= place_order_path %>">
+        <%= token_tag nil %>
+        <input type="hidden" name="shipping_address" value="<%= @shipping_address.id %>" />
+        <input type="hidden" name="billing_information[number]" value="<%= params[:card][:number] %>" />
+        <input type="hidden" name="billing_information[type]" value="<%= params[:card][:type] %>" />
+        <input type="hidden" name="billing_information[month]" value="<%= params[:card][:month] %>" />
+        <input type="hidden" name="billing_information[year]" value="<%= params[:card][:year] %>" />
+        <input type="hidden" name="billing_information[cvv]" value="<%= params[:card][:cvv] %>" />
+        <div class="form-bd place-order-form-bd">
+          <button class="btn btn-default style-bd">Colocar la orden</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<hr />
+<% @cart.shopping_cart_items.each do |item| %>
+  <%= render item %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-12 order-totals">
+      <h5>SUBTOTAL: RD<%= number_to_currency(@order.subtotal) %></h5>
+      <h5>ENVIO: RD<%= number_to_currency(@order.shipping) %></h5>
+      <h5>ITBIS: RD<%= number_to_currency(@order.tax) %></h5>
+      <h5>TOTAl:  RD<%= number_to_currency(@order.total) %></h5>
+  </div>
+</div>

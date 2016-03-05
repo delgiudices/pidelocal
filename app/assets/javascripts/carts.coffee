@@ -36,8 +36,7 @@ $(document).ready ->
       $('#total_fee').html('$' + total_fee)
 
   $('#review_order_button').click ->
-    debugger;
-    $('#payment-form').submit
+    $('#payment-form').submit()
 
     
 
