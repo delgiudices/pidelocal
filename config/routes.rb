@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'home/index'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { registrations: "users/registrations", sessions: "users/sessions" }
+
+
+  get '/', to: 'home#index', as: 'index'
 
 
   get '/api/shipping_addresses/fee', to: 'shipping_address#fee', as: 'shipping_addresses_fee'

@@ -1,0 +1,56 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.home-content {
+  text-align: center;
+
+  .title {
+    color: #e34444;
+    font-size: 40px;
+    margin-top: 25px;
+    display: block;
+  }
+
+  .description {
+    font-size: 18px;
+    padding: 15px;
+    color: #5a5a5e;
+  }
+}
+
+.sections {
+  margin-top: 100px;
+  .section-container {
+  }
+  .title {
+    font-size: 25px;
+    color: #5a5a5e;
+    font-weight: bold;
+  }
+  .description {
+    font-size: 17px;
+    color: #5a5a5e;
+  }
+}
+
+.responsive-section {
+  margin-top: 150px;
+  .responsive-image {
+    margin-top: -80px;
+  }
+}
+
+.shipping-section {
+  padding: 100px 0px 100px 0px;
+  background-color: #e34444;
+
+  .title {
+    color: #fff;
+  }
+  .description {
+    color: #fff;
+  }
+
+
+}

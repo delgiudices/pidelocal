@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
 
   layout 'store'
+  before_filter :authenticate_user!
 
   def place_order
     shipping_address = ShippingAddress.find(params[:shipping_address])
