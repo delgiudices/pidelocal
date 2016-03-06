@@ -11,18 +11,13 @@
  * file per style scope.
  *
  *= require bootstrap.min
+ *= require simen
  *= require_self
  *= require font-awesome
+ *= require products
+ *= require carts
  *= require home
  */
-
-body {
-  font-family: 'Open Sans', sans-serif;
-}
-
-img {
-  max-width: 100%;
-}
 
 ul.dropdown-lr {
   width: 300px;
@@ -74,53 +69,4 @@ ul.dropdown-lr {
   font-size: 14px;
 }
 
-.footer {
-  background-color: #30373b;
-  margin-top: 100px;
-  height: 400px;
-}
 
-.footer .container {
-  margin-top: 50px;
-  color: #FFF;
-}
-
-.footer .aliados-header {
-  font-size: 22px;
-  color: #FFF;
-  display: block;
-  margin: 0px 0px 20px 0px;
-}
-.icon-white {
-  color: #FFF;
-}
-
-.footer i {
-  position: initial;
-  font-size: 18px;
-  margin: 0px 10px 0px 0px;
-}
-
-.footer .icon-span {
-  margin-bottom: 20px;
-
-}
-
-.footer .icon-span span {
-  font-size: 18px;
-  color: #ccc;
-}
-
-.footer li {
-  list-style: none;
-  color: #FFF;
-  font-size: 18px;
-  margin: 10px;
-}
-.footer li a {
-  color: #fff;
-}
-
-.footer li a:hover {
-  color: #e34444;
-}
