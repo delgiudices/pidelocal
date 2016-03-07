@@ -82,7 +82,6 @@ ul.dropdown-lr {
 .footer {
   background-color: #30373b;
   margin-top: 100px;
-  height: 400px;
 }
 
 .footer .container {
@@ -128,4 +127,14 @@ ul.dropdown-lr {
 
 .footer li a:hover {
   color: #e34444;
+}
+
+.footer .pidelocal-footer-image-row {
+    border-top: solid 1px #ccc;
+    margin-top: 40px;
+}
+
+.footer .pidelocal-footer-image {
+    width: 250px;
+    margin-left: -30px;
 }
