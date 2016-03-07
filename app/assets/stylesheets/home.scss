@@ -62,3 +62,44 @@
     padding: 0px 50px 50px 50px;
   }
 }
+
+.btn-pidelocal {
+  border-radius: 0px;
+  background-color: #e34444;
+  border: solid 1px #ccc;
+  font-size: 18px;
+  color: #fff;
+}
+
+.btn-pidelocal:hover {
+  color: #fff;
+}
+
+form.register-form {
+  text-align: left;
+  .form-control {
+    border: none;
+    border-bottom: solid 1px #333;
+    border-radius: 0px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    font-size: 20px;
+  }
+
+  label {
+    font-size: 22px;
+  }
+
+  .form-group {
+    margin-top: 40px;
+  }
+
+  .align-center {
+    text-align: center;
+    button {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+
+}

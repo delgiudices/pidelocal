@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305204852) do
+ActiveRecord::Schema.define(version: 20160307024455) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -129,6 +129,18 @@ ActiveRecord::Schema.define(version: 20160305204852) do
   end
 
   add_index "shipping_addresses", ["user_id"], name: "index_shipping_addresses_on_user_id"
+
+  create_table "store_requests", force: :cascade do |t|
+    t.string   "full_name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "password"
+    t.string   "store_name"
+    t.string   "store_address"
+    t.string   "store_phone"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "stores", force: :cascade do |t|
     t.string   "name"

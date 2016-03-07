@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
 
   get '/', to: 'home#index', as: 'index'
+  get '/store_request', to: 'home#store_request', as: 'store_request'
+  post '/store_request', to: 'home#create_store_request', as: 'create_store_request'
+  get '/store_request/successful', to: 'home#store_request_successful', as: 'store_request_successful'
 
 
   get '/api/shipping_addresses/fee', to: 'shipping_address#fee', as: 'shipping_addresses_fee'
