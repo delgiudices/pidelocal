@@ -26,3 +26,4 @@ test:
 production:
   <<: *default
   database: pidelocal_production
+  socket: /var/run/mysqld/mysqld.sock
