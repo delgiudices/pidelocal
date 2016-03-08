@@ -1,65 +1,34 @@
-<div class="row">
-  <div id="sns_main" class="col-md-12 col-main">
-    <div id="sns_mainmidle">
-      <div class="product-view sns-product-detail">
-        <div class="product-essential clearfix">
-          <div class="row row-img">
+<div class="row product-show">
+  <div class="col-md-5">
+    <img src="<%= @product.image.url :large %>" style="border:none;"alt="">
+  </div>
+  <div class="col-md-7">
+    <h2><%= @product.name %></h2>
+    <span class="price">$ <%= @product.price %></span>
+    <span class="availability">
+      <% if @product.quantity > 0 %>
+        Hay disponible
+      <% else %>
+        Out of stock
+      <% end %>
+    </span>
+    <div class="add-to-cart">
+      <form method="post">
+        <%= token_tag nil %>
+        <div class="qty-container">
+          <button class="qty-decrease" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty ) && qty > 1 ) qty_el.value--;return false;" type="button"><i class="fa fa-chevron-left"></i></button>
+          <input id="qty" class="input-text qty" type="text" title="Qty" value="1" name="quantity">
+          <button class="qty-increase" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value++;return false;" type="button"><i class="fa fa-chevron-right"></i></button>
+          <button class="btn-cart" title="Add to Cart" data-id="qv_item_8" type="submit">
+            Agregar al carrito
+          </button>
 
-            <div class="product-img-box col-md-4 col-sm-5">
-              <div class="detail-img">
-                <img src="<%= @product.image.url :large %>" style="border:none;"alt="">
-              </div>
-            </div>
-            <div id="product_shop" class="product-shop col-md-8 col-sm-7">
-              <div class="item-inner product_list_style">
-                <div class="item-info">
-                  <div class="item-title">
-                    <a title="Modular Modern" href="javascript:;"><%= @product.name %></a>
-                  </div>
-                  <div class="item-price">
-                    <div class="price-box">
-                      <span class="regular-price">
-                        <span class="price">$ <%= @product.price %></span>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="availability">
-                    <p class="style1">
-                    <% if @product.quantity > 0 %>
-                      Hay disponible
-                    <% else %>
-                      Out of stock
-                    <% end %>
-                    </p>
-                  </div>
-                 <div class="desc std">
-                    <h5>Descripción</h5>
-                    <p><%= @product.description %></p>
-                  </div>
-
-                 <div class="actions">
-                   <form method="post">
-                     <%= token_tag nil %>
-                     <label class="gfont" for="qty">Qty : </label>
-                     <div class="qty-container">
-                       <button class="qty-decrease" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty ) && qty > 1 ) qty_el.value--;return false;" type="button"></button>
-                       <input id="qty" class="input-text qty" type="text" title="Qty" value="1" name="quantity">
-                       <button class="qty-increase" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value++;return false;" type="button"></button>
-                     </div>
-
-                     <button class="btn-cart" title="Add to Cart" data-id="qv_item_8" type="submit">
-                       Agregar al carrito
-                     </button>
-                   </form>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
+
+      </form>
+
     </div>
+    <p><%= @product.description %></p>
   </div>
 </div>
 

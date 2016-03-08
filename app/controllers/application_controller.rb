@@ -10,7 +10,13 @@ class ApplicationController < ActionController::Base
       session[:cart_id] = cart.id
       return cart
     else
-      return Cart.find(session[:cart_id])
+      cart = Cart.find_by_id(session[:cart_id])
+      if cart.present?
+        return cart
+      else
+        session[:cart_id] = nil
+        return get_cart
+      end
     end
   end
 

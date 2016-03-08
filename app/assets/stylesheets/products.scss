@@ -2,7 +2,54 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.btn-cart {
-  line-height: 33px !important;
+.product-box {
+  text-align:center;
+  font-family: 'Poppings', sans-serif;
+  a {
+    color: #000;
+    font-size: 17px;
+    display: block;
+  }
+  span {
+    font-size: 22px;
+    font-weight: bold;
+  }
 }
+
+.product-show {
+  .price {
+    color: #ed2324;
+    font-size: 30px;
+    display: block;
+    margin: 10px 0px 10px 0px;
+  }
+  .availability {
+    font-weight: bold;
+    display: block;
+    margin: 10px 0px 10px 0px;
+  }
+
+  button {
+    border: none;
+    background-color: #e34444;
+    font-weight: bold;
+    font-size: 20px;
+    color: #FFF;
+    padding: 5px 10px 5px 10px;
+  }
+
+  .input-text.qty {
+    width: 30px;
+    font-size: 18px;
+    padding: 5px 5px 5px 7px;
+  }
+
+  .add-to-cart {
+    border-bottom: solid 2px #ccc;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+  }
+
+}
+
+

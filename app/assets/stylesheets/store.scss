@@ -9,57 +9,65 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
+ *= require bootstrap.min
+ *= require font-awesome
+ *= require products
+ *= require_self
  *
  */
-
-ul.dropdown-lr {
-  width: 300px;
-  color: #000;
-}
-
-/* mobile fix */
-@media (max-width: 768px) {
-  .dropdown-lr h3 {
-    color: #eee;
-  }
-  .dropdown-lr label {
-    color: #eee;
-  }
-}
-
-.cart-top-icon {
-  vertical-align: super;
-  margin-top: -2px;
-  font-size: 25px !important;
-  color: #FFF;
-}
-
-#logo a h1 {
-    font-family: sans-serif;
-}
-
-.product-image {
-    border: none !important;
-}
-
-.fa-ul li p { 
-    line-height: 34px !important;
-}
-
-.clear {
-  clear: both;
-}
 
 .main-nav {
   background-color: #30373b;
   height: 55px;
   border-radius: 0px;
   font-family: 'Open Sans', sans-serif;
-
 }
 
-.main-nav .navbar-nav li a {
-  font-size: 14px;
+.navbar-nav > li > a {
+  color: #ccc !important;
+  font-size: 15px;
 }
+
+.navbar-nav > li > a:hover {
+  color: #fff !important;
+}
+
+.footer {
+  background-color: #30373b;
+  margin-top: 100px;
+}
+
+.footer .container {
+  margin-top: 50px;
+  color: #FFF;
+}
+
+.footer .pidelocal-footer-image-row {
+    border-top: solid 1px #ccc;
+    margin-top: 40px;
+}
+
+.footer .pidelocal-footer-image {
+    width: 250px;
+    margin-left: -30px;
+}
+
+.aliados-header {
+  font-size: 20px;
+}
+
+.icon-span {
+
+  margin-top: 10px;
+  font-size: 15px;
+  i {
+    margin-right: 10px;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
 
 
