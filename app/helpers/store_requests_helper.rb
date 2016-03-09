@@ -1,0 +1,2 @@
+module StoreRequestsHelper
+end

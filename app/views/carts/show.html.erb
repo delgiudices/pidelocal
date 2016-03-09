@@ -1,53 +1,51 @@
-<div id="sns_content" class="wrap layout-m">
-  <div class="container">
-    <div class="row">
-      <div class="shoppingcart">
-        <div class="sptitle col-md-12">
-          <h3>Carrito de Compras</h3>
+<div class="row">
+  <div class="col-md-12">
+    <span class="title">Articulos en el carrito</span>
+  </div>
+</div>
+
+<form method="post" id="cart_form">
+  <%= token_tag %>
+  <input id="product_id" type="hidden" name="product" />
+</form>
+
+
+
+<% @cart.shopping_cart_items.each do |item| %>
+  <div class="row cart_item">
+    <div class="col-md-2">
+      <%= image_tag item.item.image.url :thumb %>
+    </div>
+    <div class="col-md-10">
+
+      <div class="row">
+        <div class="col-md-7">
+          <h5><%= item.item.name %></h5>
         </div>
-        <div class="content col-md-12">
-          <ul class="title clearfix">
-            <li class="text1"><a href="#">Nombre </a></li>
-            <li class="text2"><a href="#">Precio </a></li>
-            <li class="text2"><a href="#">Cantidad</a></li>
-            <li class="text2"><a href="#">Sub-Total</a></li>
-          </ul>
-
-
-          <% @cart.shopping_cart_items.each do |item| %>
-            <form method="post" id="cart_form">
-              <%= token_tag nil %>
-              <input type="hidden" name="product" value="<%= item.id %>" />
-
-              <ul class="nav-mid clearfix">
-                <li class="image"><a href="#"><img src="<%= item.item.image.url :thumb %>" alt=""></a></li>
-                <li class="item-title"><a href="<% product_path(id: @store.identifier, product_id: item.item.id) %>"><%= item.item.name %></a></li>
-                <li class="icon1"><a href="javascript:refresh_item();"><i class="btn-edit"></i></a></li>
-                <li class="price1">$<%= item.price %></li>
-                <li class="number"><input name="quantity" value="<%= item.quantity %>" style="width: 100%;" /></a></li>
-                <li class="price2">$<%= item.price * item.quantity %></li>
-                <li class="icon2"><a href="javascript:delete_item();"><i class="btn-remove fa fa-remove"></i></a></li>
-              </ul>
-            </form>
-            <% end %>
-          <ul class="nav-bot clearfix">
-            <li class="continue"><a href="#">Continuar comprando</a></li>
-          </ul>
-          <div class="row">
-            <form class="form-right col-md-4 col-md-offset-8">
-              <div class="form-bd">
-                <p class="subtotal">
-                </p>
-                <h3>
-                  <span class="text3">SUBTOTAL:</span>
-                  <span class="text4">$<%= @cart.subtotal %></span>
-                </h3>
-                <a href="<%= checkout_path(id: @store.identifier) %>"><span class="style-bd">Pagar</span></a>
-              </div>
-            </form>
-          </div>
+        <div class="col-md-1">
+          <span><%= item.price %></span>
+        </div>
+        <div class="col-md-1">
+          <span><%= item.quantity %></span>
+        </div>
+        <div class="col-md-3 align-right">
+          <h5><%= item.price * item.quantity %></h5>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-md-2 pull-right align-right">
+          <div class="delete-cart-item"><a href="javascript:delete_item(<%= item.id %>);">Borrar del carrito</a></div>
         </div>
       </div>
     </div>
   </div>
+<% end %>
+
+<div class="row align-right subtotal">
+  <div class="col-md-12">
+    <span>Subtotal $ <%= @cart.subtotal %></span>
+  </div>
 </div>
+
+

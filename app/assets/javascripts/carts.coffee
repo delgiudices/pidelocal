@@ -10,12 +10,13 @@ refresh_item = () ->
   ).appendTo('#cart_form')
   $("#cart_form").submit()
 
-delete_item = () ->
+delete_item = (id) ->
   $('<input>').attr(
     type: 'hidden'
     name: 'cart_action'
     value: 'delete'
   ).appendTo('#cart_form')
+  $('#product_id').val(id);
   $("#cart_form").submit()
 
 $(document).ready ->

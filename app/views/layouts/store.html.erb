@@ -4,6 +4,7 @@
   <head>
     <title>Detail</title>
     <link href='https://fonts.googleapis.com/css?family=Poppins:300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag    'store', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -89,7 +90,7 @@
   </nav>
 
   <div class="container">
-    <div class="row">
+    <div class="row logo-row">
       <div class="col-md-12">
         <a href="<%= store_path(id: @store.identifier) %>">
           <img src="/images/radioshack.png" style="width: 200px;"/>

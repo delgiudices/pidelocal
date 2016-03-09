@@ -4,11 +4,15 @@
 
 .product-box {
   text-align:center;
-  font-family: 'Poppings', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   a {
     color: #000;
     font-size: 17px;
     display: block;
+  }
+  a:hover {
+    color: #ed2324;
+    text-decoration: none;
   }
   span {
     font-size: 22px;
