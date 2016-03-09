@@ -8,8 +8,7 @@ Rails.application.routes.draw do
 
 
   get '/', to: 'home#index', as: 'index'
-  get '/store_request', to: 'store_requests#new', as: 'store_request'
-  post '/store_request', to: 'store_requests#create', as: 'create_store_request'
+  resources :store_requests
   get '/store_request/successful', to: 'store_requests#store_request_successful', as: 'store_request_successful'
 
 

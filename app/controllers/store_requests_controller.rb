@@ -5,9 +5,9 @@ class StoreRequestsController < ApplicationController
   end
 
   def create
-    store_request = StoreRequest.new store_request_params
-    if store_request.save
-      StoreNotifier.create_store_request_email(store_request).deliver
+    @store_request = StoreRequest.new store_request_params
+    if @store_request.save
+      StoreNotifier.create_store_request_email(@store_request).deliver
       redirect_to store_request_successful_path
     else
       render "new"

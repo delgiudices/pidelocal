@@ -12,8 +12,6 @@ class ProductsController < ApplicationController
     @cart.add(product, product.price, params[:quantity].to_i, name: product.name)
     flash[:notice] = "El Articulo fue agregado al carrito"
     redirect_to(controller: '/carts', action: 'show')
-
   end
-
 
 end
