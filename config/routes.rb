@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/store_request/successful', to: 'store_requests#store_request_successful', as: 'store_request_successful'
 
 
-  get '/api/shipping_addresses/fee', to: 'shipping_address#fee', as: 'shipping_addresses_fee'
+  get '/api/shipping_addresses/fee', to: 'shipping_addresses#fee', as: 'shipping_addresses_fee'
 
   get '/:id', to: 'stores#show', as: 'store'
   get '/:id/cart', to: 'carts#show', as: 'cart'

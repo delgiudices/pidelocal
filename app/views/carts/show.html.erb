@@ -34,7 +34,7 @@
       </div>
       <hr />
       <div class="row">
-        <div class="col-md-2 pull-right align-right">
+        <div class="col-md-3 pull-right align-right">
           <div class="delete-cart-item">
             <%= link_to 'Eliminar del carrito', cart_item_path(@store.identifier, item.id), method: :delete %>
           </div>
@@ -47,6 +47,9 @@
 <div class="row align-right subtotal">
   <div class="col-md-12">
     <span>Subtotal $ <%= @cart.subtotal %></span>
+  </div>
+  <div class="col-md-12 checkout-button">
+    <%= link_to "Pagar", checkout_path(@store.identifier), class: 'btn btn-default' %>
   </div>
 </div>
 

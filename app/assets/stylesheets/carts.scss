@@ -1,6 +1,8 @@
 // Place all the styles related to the carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$red: #e34444;
+
 
 .title {
   font-size: 26px;
@@ -98,3 +100,18 @@
 .subtotal {
   margin-top: 30px;
 }
+
+.checkout-button {
+  margin-top: 10px;
+  a {
+    background-color: $red;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+  }
+  a:hover {
+    background-color: $red;
+    color: #fff;
+  }
+}
+
