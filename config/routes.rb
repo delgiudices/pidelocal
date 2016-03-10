@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get '/:id', to: 'stores#show', as: 'store'
   get '/:id/cart', to: 'carts#show', as: 'cart'
   post '/:id/cart', to: 'carts#update', as: 'update_cart'
+  delete '/:id/cart/items/:item_id', to: 'cart_items#destroy', as: 'cart_item'
   get '/:id/checkout', to: 'carts#checkout', as: 'checkout'
   post '/:id/review_order', to: 'carts#review_order', as: 'review_order'
   post '/:id/place_order', to: 'orders#place_order', as: 'place_order'

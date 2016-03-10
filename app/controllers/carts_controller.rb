@@ -15,10 +15,6 @@ class CartsController < ApplicationController
       product.save
       flash[:notice] = "El carrito fue actualizado exitosamente"
       redirect_to cart_path
-    elsif
-      product.destroy
-      flash[:notice] = "El articulo fue removido exitosamente"
-      redirect_to cart_path
     end
   end
 

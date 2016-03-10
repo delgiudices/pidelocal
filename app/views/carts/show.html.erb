@@ -35,7 +35,9 @@
       <hr />
       <div class="row">
         <div class="col-md-2 pull-right align-right">
-          <div class="delete-cart-item"><a href="javascript:delete_item(<%= item.id %>);">Borrar del carrito</a></div>
+          <div class="delete-cart-item">
+            <%= link_to 'Eliminar del carrito', cart_item_path(@store.identifier, item.id), method: :delete %>
+          </div>
         </div>
       </div>
     </div>
