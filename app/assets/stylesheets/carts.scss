@@ -115,3 +115,18 @@ $red: #e34444;
   }
 }
 
+.checkout-totals {
+  border: solid 1px #ccc;
+  margin-top: 10px;
+  padding: 10px;
+  text-align: right;
+
+  .text4 {
+    color: $red;
+  }
+
+  .subtotal {
+    margin-top: 10px;
+  }
+}
+
