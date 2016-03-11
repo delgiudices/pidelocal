@@ -15,7 +15,8 @@ RSpec.feature "Checkouts", type: :feature do
 
   scenario "not logged in" do
     click_link "Pagar"
-    expect(page.current_url).to include(new_user_session_url)
+    expect(page.current_url).to include(store_url(store.identifier))
+    expect(page).to have_content "Debe iniciar sesión"
   end
 
   scenario "logged in" do

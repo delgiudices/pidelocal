@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       super
     else
-      redirect_to new_user_session_path(next: request.fullpath), :notice => 'Debe iniciar sesión'
+      redirect_to store_path(store.identifier, next: request.fullpath), notice: 'Debe iniciar sesión'
     end
   end
 end

@@ -11,7 +11,7 @@ class Users::SessionsController < Devise::SessionsController
   end
   
   def after_sign_in_path_for(resource)
-    url_for(controller: '/stores', action: 'show', id: params[:id])
+    params[:next] || root_path
   end
 
   # POST /resource/sign_in

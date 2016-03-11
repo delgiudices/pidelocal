@@ -52,8 +52,9 @@
                 <div class="text-center"><h3><b>Acceder</b></h3></div>
                 <form id="ajax-login-form" action="<%= user_session_path(:id => @store.identifier) %>" method="post" role="form" autocomplete="off">
                   <%= token_tag nil %>
+                  <input type="hidden" name="next" value="<%= params[:next] %>" />
                   <div class="form-group">
-                    <label for="username">Correo</label>
+                    <label for="username">Correo Electrónico</label>
                     <input type="text" name="user[email]" id="username" tabindex="1" class="form-control" placeholder="Username" value="" autocomplete="off">
                   </div>
 
