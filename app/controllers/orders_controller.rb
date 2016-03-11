@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
     @order.user = current_user
     @order.store = store
     @order.place
+    flash[:notice] = "La orden fue colocada exitosamente"
     redirect_to order_path(id: params[:id], order_id: @order.id)
   end
 

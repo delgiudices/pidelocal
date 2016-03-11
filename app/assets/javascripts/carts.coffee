@@ -36,11 +36,6 @@ $(document).ready ->
       total_fee = subtotal_fee + shipping_fee + tax_fee
       $('#total_fee').html('$' + total_fee)
 
-  $('#review_order_button').click ->
-    $('#payment-form').submit()
-
-    
-
 
 root = exports ? this
 root.refresh_item = refresh_item

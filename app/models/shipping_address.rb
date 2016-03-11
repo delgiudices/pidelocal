@@ -12,4 +12,8 @@ class ShippingAddress < ActiveRecord::Base
   def fee
     75.00
   end
+
+  def to_s
+    "#{name} , #{phone}, #{address}, #{city}"
+  end
 end
