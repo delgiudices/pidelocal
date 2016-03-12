@@ -20,7 +20,7 @@ RSpec.feature "LoggingIns", type: :feature do
     fill_in "Correo Electrónico", with: 'luis.dg19@gmail.com'
     fill_in "Contraseña", with: 'secretpass'
     click_button "Ingresar"
-    expect(page).to have_content "Inicio de Sesión exitoso"
+    expect(page).to have_content "Sesión iniciada"
     expect(page.current_url).to eq(store_url(store.identifier))
   end
 

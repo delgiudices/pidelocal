@@ -7,7 +7,7 @@
           <%= l order.created_at, format: :short %> - Numero de orden #<%= order.id %>
         </div>
         <div class="order-status pull-right">
-          
+          <%= link_to 'Ver detalle', store_order_path(@store.identifier, order) %>
         </div>
         <div class="clear">
         </div>
@@ -24,4 +24,6 @@
       </div>
     </div>
   <% end %>
+
+  <%= will_paginate @orders %>
 </div>

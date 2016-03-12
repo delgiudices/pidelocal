@@ -23,7 +23,26 @@ RSpec.feature "ViewingOrders", type: :feature do
     click_link "Mis ordenes"
     expect(page.current_url).to eq(store_orders_url(store.identifier))
     expect(page).to have_content order_item.name
+  end
 
+  scenario "orders on another page" do
+    order2 = FactoryGirl.create(:order, user: user, store: store)
+    order_item2 = FactoryGirl.create(:order_item, name: 'SomeOtherName', order: order2)
+    Order.per_page = 1
+    login_as(user, scope: :user)
+    visit store_path(store.identifier)
+    click_link "Mis ordenes"
+    expect(page).not_to have_content order_item2.name
+    click_link "Siguiente"
+    expect(page).to have_content order_item2.name
+  end
+
+  scenario "viewing details" do
+    login_as(user, scope: :user)
+    visit store_path(store.identifier)
+    click_link "Mis ordenes"
+    click_link "Ver detalle"
+    expect(page.current_url).to eq(store_order_url(store.identifier, order))
   end
 
 

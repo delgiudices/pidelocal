@@ -20,3 +20,15 @@ $red: #e34444;
     }
   }
 }
+
+#order {
+  .table {
+    td {
+      border: none;
+      padding: 2px;
+    }
+    td.right {
+      text-align: right;
+    }
+  }
+}

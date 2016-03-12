@@ -6,6 +6,8 @@ class Order < ActiveRecord::Base
   
   scope :for_store, -> (store, and_user:) { where(store: store, user: and_user) }
 
+  self.per_page = 10
+
   def self.from(cart:, shipping_address:, billing_information: nil)
     order = Order.new
     order.subtotal = 0

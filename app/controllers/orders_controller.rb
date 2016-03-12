@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   before_filter :set_store, only: [:show, :index]
 
   def index
-    @orders = Order.for_store(@store, and_user: current_user)
+    @orders = Order.for_store(@store, and_user: current_user).paginate(page: params[:page])
   end
 
   def place_order
