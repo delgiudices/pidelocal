@@ -25,6 +25,7 @@
           <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><%= link_to "Mis ordenes", store_orders_path(@store.identifier), id: 'my_orders_link' %></li>
           <li><%= link_to "Cerrar Sesión", destroy_user_session_path(:id => @store.identifier), :method => :delete %></li>
         </ul>
         </li>

@@ -11,6 +11,13 @@
 
 
 
+<% if @cart.shopping_cart_items.empty? %>
+  <div class="row">
+    <div class="col-md-12">
+      No hay ningun articulo en el carrito
+    </div>
+  </div>
+<% end %>
 <% @cart.shopping_cart_items.each do |item| %>
   <div class="row cart_item">
     <div class="col-md-2">
@@ -44,13 +51,13 @@
   </div>
 <% end %>
 
-<div class="row align-right subtotal">
-  <div class="col-md-12">
-    <span>Subtotal $ <%= @cart.subtotal %></span>
+<% unless @cart.shopping_cart_items.empty? %>
+  <div class="row align-right subtotal">
+    <div class="col-md-12">
+      <span>Subtotal $ <%= @cart.subtotal %></span>
+    </div>
+    <div class="col-md-12 checkout-button">
+      <%= link_to "Pagar", checkout_path(@store.identifier), class: 'btn btn-default' %>
+    </div>
   </div>
-  <div class="col-md-12 checkout-button">
-    <%= link_to "Pagar", checkout_path(@store.identifier), class: 'btn btn-default' %>
-  </div>
-</div>
-
-
+<% end %>

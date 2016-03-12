@@ -14,7 +14,10 @@ Rails.application.routes.draw do
 
   get '/api/shipping_addresses/fee', to: 'shipping_addresses#fee', as: 'shipping_addresses_fee'
 
-  get '/:id', to: 'stores#show', as: 'store'
+  resources :stores, only: [:show], path: '/' do
+    resources :orders
+  end
+  # get '/:id', to: 'stores#show', as: 'store'
   get '/:id/cart', to: 'carts#show', as: 'cart'
   post '/:id/cart', to: 'carts#update', as: 'update_cart'
   delete '/:id/cart/items/:item_id', to: 'cart_items#destroy', as: 'cart_item'

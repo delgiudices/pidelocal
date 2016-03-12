@@ -3,6 +3,8 @@ class Order < ActiveRecord::Base
   has_many :order_items
   belongs_to :user
   belongs_to :store
+  
+  scope :for_store, -> (store, and_user:) { where(store: store, user: and_user) }
 
   def self.from(cart:, shipping_address:, billing_information: nil)
     order = Order.new
