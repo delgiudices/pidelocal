@@ -14,135 +14,35 @@
 
   </head>
   <body>
-    <nav class="navbar navbar-inverse main-nav" role="navigation">
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-      </div>
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <% @store.categories.each do |category| %>
-            <li>
-            <a href="<%= category_path(id: @store.identifier, category_id: category.identifier) %>" >
-              <%= category.name %>
-            </a>
-            </li>
-          <% end %>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-          <a class="" title="Cart" href="<%= cart_path(id: @store.identifier) %>"><i class="fa fa-shopping-cart cart-top-icon"></i> RD$<%= get_cart.subtotal %></a>
-          </li>
-          <% if user_signed_in? %>
-            <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Mi cuenta
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><%= link_to "Cerrar Sesión", destroy_user_session_path(:id => @store.identifier), :method => :delete %></li>
-            </ul>
-            </li>
-          <% else %>
-            <li>
-            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">Acceder <span class="caret"></span></a>
-            <ul class="dropdown-menu dropdown-lr animated slideInRight" role="menu">
-              <div class="col-lg-12">
-                <div class="text-center"><h3><b>Acceder</b></h3></div>
-                <form id="ajax-login-form" action="<%= user_session_path(:id => @store.identifier) %>" method="post" role="form" autocomplete="off">
-                  <%= token_tag nil %>
-                  <input type="hidden" name="next" value="<%= params[:next] %>" />
-                  <div class="form-group">
-                    <label for="username">Correo Electrónico</label>
-                    <input type="text" name="user[email]" id="username" tabindex="1" class="form-control" placeholder="Username" value="" autocomplete="off">
-                  </div>
+    <div id="wrapper">
 
-                  <div class="form-group">
-                    <label for="password">Contraseña</label>
-                    <input type="password" name="user[password]" id="password" tabindex="2" class="form-control" placeholder="Password" autocomplete="off">
-                  </div>
+      <%= render 'nav' %>
 
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-xs-7">
-                        <a href="<%= new_user_registration_path(:id => @store.identifier) %>"><button type="button" class="btn btn-success">Registarse</button></a>
-                      </div>
-                      <div class="col-xs-5 pull-right">
-                        <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-success" value="Ingresar">
-                      </div>
-                    </div>
-                  </div>
-
-                  <input type="hidden" class="hide" name="token" id="token" value="a465a2791ae0bae853cf4bf485dbe1b6">
-                </form>
-              </div>
-            </ul>
-            </li>
-          <% end %>
+      <%= render 'flash_messages' %>
 
 
-        </ul>
-      </div>
-    </div>
-    <!-- /.navbar-collapse -->
-  </div>
-  <!-- /.container -->
-  </nav>
-
-  <% unless flash.empty? %>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-
-          <% flash.each do |key, value| %>
-            <div class="alert alert-warning alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <%= value %>
-            </div>
-          <% end %>
-
-        </div>
-      </div>
-    </div>
-  <% end %>
-
-  <div class="container">
-    <div class="row logo-row">
-      <div class="col-md-12">
-        <a href="<%= store_path(id: @store.identifier) %>">
-          <img src="/images/radioshack.png" style="width: 200px;"/>
-        </a>
-      </div>
-    </div>
-
-    <%= yield %>
-  </div>
-
-  <div class="container-fluid footer">
-    <div class="row">
-      <div class="col-md-12">
+      <div id="content">
+        <!-- Container -->
         <div class="container">
-          <div class="row">
-            <div class="col-md-4">
-              <span class="aliados-header">Contacto</span>
-              <div class="icon-span">
-                <i class="fa fa-envelope icon-white"></i><span>info@pidelocal.com</span>
-              </div>
-              <div class="icon-span">
-                <i class="fa fa-phone icon-white"></i><span>(829) 696-4737</span>
-              </div>
+          <div class="row logo-row">
+            <div class="col-md-12">
+              <a href="<%= store_path(id: @store.identifier) %>">
+                <img src="/images/radioshack.png" style="width: 200px;"/>
+              </a>
             </div>
           </div>
-          <div class="row pidelocal-footer-image-row">
-            Powered by  
-            <img src="/images/pidelocalwhite.png" class="pidelocal-footer-image" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Scripts -->
-</body>
+          <%= yield %>
+        </div>
+        <!-- Container -->
+      </div>
+
+      <div id="footer">
+        <%= render 'store_footer' %>
+      </div>
+
+    </div><!-- Wrapper -->
+
+    <!-- Scripts -->
+  </body>
 </html>
