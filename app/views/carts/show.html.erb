@@ -43,7 +43,7 @@
       <div class="row">
         <div class="col-md-3 pull-right align-right">
           <div class="delete-cart-item">
-            <%= link_to 'Eliminar del carrito', cart_item_path(@store.identifier, item.id), method: :delete %>
+            <%= link_to 'Eliminar del carrito', store_cart_cart_item_path(@store.identifier, item.id), method: :delete %>
           </div>
         </div>
       </div>

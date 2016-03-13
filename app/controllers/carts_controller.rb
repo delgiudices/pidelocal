@@ -21,4 +21,13 @@ class CartsController < ApplicationController
     @order = Order.from(cart: @cart, shipping_address: @shipping_address)
   end
 
+  def add_item
+    @cart = get_cart
+    product = Product.find(params[:product_id])
+    @cart.add(product, product.price, params[:quantity].to_i, name: product.name)
+    flash[:notice] = "El Articulo fue agregado al carrito"
+    redirect_to(controller: '/carts', action: 'show')
+  end
+
+
 end

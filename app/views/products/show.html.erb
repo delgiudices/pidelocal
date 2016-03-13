@@ -13,8 +13,9 @@
       <% end %>
     </span>
     <div class="add-to-cart">
-      <form method="post">
+      <form method="post" action="<%= add_item_store_cart_path(@store.identifier, @product) %>" >
         <%= token_tag nil %>
+        <input type="hidden" name="product_id" value="<%= @product.id %>" />
         <div class="qty-container">
           <button class="qty-decrease" onclick="var qty_el = document.getElementById('qty'); var qty = qty_el.value; if( !isNaN( qty ) && qty > 1 ) qty_el.value--;return false;" type="button"><i class="fa fa-chevron-left"></i></button>
           <input id="qty" class="input-text qty" type="text" title="Qty" value="1" name="quantity">

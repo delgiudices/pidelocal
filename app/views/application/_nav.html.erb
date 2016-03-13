@@ -8,7 +8,7 @@
     <ul class="nav navbar-nav">
       <% @store.categories.each do |category| %>
         <li>
-        <a href="<%= category_path(id: @store.identifier, category_id: category.identifier) %>" >
+        <a href="<%= store_category_path(@store.identifier, category.identifier) %>" >
           <%= category.name %>
         </a>
         </li>
@@ -16,7 +16,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li>
-      <a class="" title="Cart" href="<%= cart_path(id: @store.identifier) %>"><i class="fa fa-shopping-cart cart-top-icon"></i> RD$<%= get_cart.subtotal %></a>
+      <a class="" title="Cart" href="<%= store_cart_path(@store.identifier) %>"><i class="fa fa-shopping-cart cart-top-icon"></i> RD$<%= get_cart.subtotal %></a>
       </li>
       <% if user_signed_in? %>
         <li class="dropdown">
