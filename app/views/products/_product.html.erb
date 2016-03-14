@@ -1,6 +1,6 @@
 <div class="product-box">
   <img alt="" src="<%= product.image.url(:medium) %>">
-  <a href="<%= product_path(id: @store.identifier, product_id: product.id) %>">
+  <a href="<%= store_product_path(@store.identifier, product) %>">
     <%= product.name %>
   </a>
   <span class="price1">$ <%= product.price %></span>

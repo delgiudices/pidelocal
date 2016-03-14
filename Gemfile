@@ -42,6 +42,8 @@ gem 'jquery-turbolinks'
 
 gem 'puma'
 
+gem 'will_paginate', '~> 3.0.6'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -79,3 +81,5 @@ gem 'capistrano-bundler'
 gem 'capistrano3-puma'
 
 gem "capybara"
+gem 'devise-i18n'
+

@@ -1,6 +1,6 @@
-<div class="row shoppingcart">
-  <div class="col-md-8">
-    <form id="payment-form" method="post" action="<%= review_order_path %>" data-toggle="validator">
+<form id="payment-form" method="post" action="<%= review_order_path %>" data-toggle="validator">
+  <div class="row shoppingcart">
+    <div class="col-md-8">
       <%= token_tag nil %>
       <h3>Seleccione una Direccion de Envio</h3>
       <div class="form-group">
@@ -11,7 +11,7 @@
             <div class="radio shipping-address">
               <label>
                 <input type="radio" name="order[shipping_address]" value="<%= sa.id %>" required>
-                <span class="address"><%= sa.name %>, <%= sa.phone %>, <%= sa.address %>, <%= sa.city %></span>
+                <span class="address"><%= sa.to_s %></span>
               </label>
               </li>
             </div>
@@ -24,7 +24,7 @@
         <div class="row">
           <div class="col-md-8">
             <div class="form-group">
-              <label class="control-label">Numero de La Tarjeta</label>
+              <label class="control-label" for="cardNumber">Numero de La Tarjeta</label>
               <input id="cardNumber" type="text" class="form-control" name="card[number]" placeholder="Valid Card Number" required data-stripe="number" />
             </div>                            
           </div>
@@ -45,51 +45,51 @@
               <div class="row">
                 <div class="col-xs-6 col-lg-6">
                   <label for="expMonth" class="control-label">Mes</label>
-                  <input type="text" class="form-control" name="card[month]" placeholder="MM" required data-stripe="exp_month" />
+                  <input type="text" id="expMonth" class="form-control" name="card[month]" placeholder="MM" required data-stripe="exp_month" />
                 </div>
                 <div class="col-xs-6 col-lg-6 pl-ziro">
-                  <label for="expMonth" class="control-label">Año</label>
-                  <input type="text" class="form-control" name="card[year]" placeholder="YY" required data-stripe="exp_year" />
+                  <label for="expYear" class="control-label">Año</label>
+                  <input type="text" id="expYear" class="form-control" name="card[year]" placeholder="YY" required data-stripe="exp_year" />
                 </div>
               </div>
             </div>
           </div>
           <div class="col-xs-5 col-md-5 pull-right">
             <div class="form-group">
-              <label for="expMonth" class="control-label">CVV</label>
-              <input type="password" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" />
+              <label for="CVV" class="control-label">CVV</label>
+              <input type="password" id="CVV" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" />
             </div>
           </div>
         </div>
-        <button type="submit" style="display: none;"></button>
+      </div>
 
+    </div>
+    <div class="col-md-4">
+      <div class="checkout-totals form-right col-md-12">
+        <div class="">
+          <p class="subtotal">
+          <span class="text1">SUBTOTAL:</span>
+          <span id="subtotal_fee" class="text2">$<%= @cart.subtotal %></span>
+          </p>
+          <p class="subtotal">
+          <span class="text1">ENVIO:</span>
+          <span id="shipping_fee" class="text2">$0.00</span>
+          </p>
+          <p class="subtotal">
+          <span class="text1">ITBIS:</span>
+          <span id="tax_fee" class="text2">$<%= @cart.tax %></span>
+          </p>
+          <h3>
+            <span class="text3">TOTAL:</span>
+            <span id="total_fee" class="text4">$<%= @cart.total %></span>
+          </h3>
+          <div class="checkout-button">
+            <button id="review_order_button" type="submit" class="btn btn-default">Revisar la Orden</button>
+          </div>
+        </div>
       </div>
-    </form>
-    
+    </div>
   </div>
-  <div class="col-md-4">
-    <form class="checkout-totals form-right col-md-12">
-      <div class="">
-        <p class="subtotal">
-        <span class="text1">SUBTOTAL:</span>
-        <span id="subtotal_fee" class="text2">$<%= @cart.subtotal %></span>
-        </p>
-        <p class="subtotal">
-        <span class="text1">ENVIO:</span>
-        <span id="shipping_fee" class="text2">$0.00</span>
-        </p>
-        <p class="subtotal">
-        <span class="text1">ITBIS:</span>
-        <span id="tax_fee" class="text2">$<%= @cart.tax %></span>
-        </p>
-        <h3>
-          <span class="text3">TOTAL:</span>
-          <span id="total_fee" class="text4">$<%= @cart.total %></span>
-        </h3>
-        <button id="review_order_button" type="button" class="btn btn-default style-bd">Revisar la Orden</button>
-      </div>
-    </form>
-  </div>
-</div>
+</form>
 
 <%= render "new_shipping_address_modal" %>

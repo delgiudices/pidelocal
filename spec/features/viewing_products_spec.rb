@@ -13,7 +13,7 @@ RSpec.feature "ViewingProducts", type: :feature do
   scenario "can view products" do
     click_link product.name
 
-    expect(page.current_url).to eql(product_url(store.identifier, product))
+    expect(page.current_url).to eql(store_product_url(store.identifier, product))
     expect(page).to have_content product.description
   end
 

@@ -3,7 +3,7 @@
     <div class="review-order-item">
       <span class="item-quantity"><%= order_item.quantity %>x</span>
       <span class="item-name"><%= order_item.name %></span>
-      <span class="item-price">RD$ <%= order_item.price * order_item.quantity %></span>
+      <span class="item-price"><%= number_to_currency(order_item.price * order_item.quantity) %></span>
       <div class="clear"></div>
     </div>
   </div>

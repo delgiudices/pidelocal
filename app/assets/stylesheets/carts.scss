@@ -103,13 +103,13 @@ $red: #e34444;
 
 .checkout-button {
   margin-top: 10px;
-  a {
+  .btn-default {
     background-color: $red;
     color: #fff;
     border: none;
     font-size: 18px;
   }
-  a:hover {
+  .btn-default:hover {
     background-color: $red;
     color: #fff;
   }

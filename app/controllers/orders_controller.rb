@@ -2,6 +2,11 @@ class OrdersController < ApplicationController
 
   layout 'store'
   before_filter :authenticate_user!
+  before_filter :set_store, only: [:show, :index]
+
+  def index
+    @orders = Order.for_store(@store, and_user: current_user).paginate(page: params[:page])
+  end
 
   def place_order
     shipping_address = ShippingAddress.find(params[:shipping_address])
@@ -13,12 +18,12 @@ class OrdersController < ApplicationController
     @order.user = current_user
     @order.store = store
     @order.place
-    redirect_to order_path(id: params[:id], order_id: @order.id)
+    flash[:notice] = "La orden fue colocada exitosamente"
+    redirect_to store_order_path(params[:id], @order)
   end
 
   def show
-    @store = store
-    @order = Order.find_by!(id: params[:order_id], user_id: current_user.id, store_id: @store.id)
+    @order = Order.find_by!(id: params[:id], user_id: current_user.id, store_id: @store.id)
     @shipping_address = ShippingAddress.new
   end
 

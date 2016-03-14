@@ -21,7 +21,11 @@ class ApplicationController < ActionController::Base
   end
 
   def store
-    Store.find_by(identifier: params[:id])
+    Store.find_by(identifier: params[:id] || params[:store_id])
+  end
+
+  def set_store
+    @store = Store.find_by(identifier: params[:store_id])
   end
 
 
