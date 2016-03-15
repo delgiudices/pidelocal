@@ -14,39 +14,14 @@
  *= require products
  *= require carts
  *= require_self
- *= require orders
- *= require pagination
  *
  */
 
 $red: #e34444;
 
-html,
 body {
   font-family: 'Montserrat';
-  margin: 0px;
-  padding: 0px;
-  height: 100%;
 }
-
-#wrapper {
-  min-height: 100%;
-  position: relative;
-}
-
-#content {
-  padding-bottom: 320px;
-}
-
-#footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 300px;
-  background-color: #30373b;
-}
-
 
 .main-nav {
   background-color: #ffffff;
@@ -55,11 +30,58 @@ body {
   border: none;
   font-family: 'Montserrat', sans-serif;
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
-}
 
-.login-dropdown {
-  width: 300px !important;
-  margin-top: 3px !important;
+  .nav-wrapper {
+      height: 44px;
+      margin: 8px 0px;
+      line-height: 44px;
+
+      .logo-tag {
+          width: 50%;
+          img {
+              max-height: 40px;
+              max-width: 100%;
+          }
+      }
+  }
+
+  .navbar-nav {
+      margin: 0px;
+      height: 100% !important;
+      li {
+          display: inline-block;
+          height: 100% !important;
+      }
+      a {
+          transition-duration: 0.5s;
+      }
+      a:hover {
+          color: #222;
+          transition-duration: 0.5s;
+      }
+  }
+
+  .dropdown-menu {
+      @media(max-width: 767px) {
+          background-color: #fff !important;
+          -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175) !important;
+          box-shadow: 0 6px 12px rgba(0,0,0,.175) !important;
+          border: solid 1px #ccc;
+          margin-left: -300px;
+      }
+      text-align: center;
+      width: 300px;
+      border-top: none;
+      margin-top: 8px !important;
+      position: absolute !important;
+      font-family: 'Helvetica';
+      li > a {
+          color: #337ab7;
+      }
+      h4 {
+          margin: 8px;
+      }
+  }
 }
 
 .logo-row {
@@ -67,12 +89,15 @@ body {
 }
 
 .navbar-nav > li > a {
-  color: #ccc !important;
-  font-size: 15px;
+  font-family: 'Open Sans';
+  font-size: 25px;
+  color: #999;
+  padding: 10px 15px;
 }
 
-.navbar-nav > li > a:hover {
-  color: #fff !important;
+.footer {
+  background-color: #30373b;
+  margin-top: 100px;
 }
 
 .footer .container {
@@ -107,7 +132,5 @@ img {
   max-width: 100%;
 }
 
-.clear {
-  clear: both;
-}
+
 
