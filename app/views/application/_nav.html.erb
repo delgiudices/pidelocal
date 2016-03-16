@@ -16,7 +16,7 @@
             <a href="javascript:;" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <i class="fa fa-user cart-top-icon"></i>
             </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <ul class="dropdown-menu small-dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li><%= link_to "Mis ordenes", store_orders_path(@store.identifier), id: 'my_orders_link' %></li>
                 <li><%= link_to "Cerrar Sesión", destroy_user_session_path(:id => @store.identifier), :method => :delete %></li>
             </ul>
@@ -61,7 +61,7 @@
 
         <li>
         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></a>
-        <ul class="dropdown-menu dropdown-lr animated login-dropdown" role="menu">
+        <ul class="dropdown-menu dropdown-lr animated login-dropdown categories-dropdown-menu" role="menu">
           <h4>Categorias</h4>
           <% @store.categories.each do |category| %>
             <li class="col-md-6 col-xs-6">
